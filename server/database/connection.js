@@ -2,6 +2,8 @@ import {mongoose} from "mongoose";
 import dotenv from "dotenv";
 import  path  from "path";
 
+console.log(process.env.NODE_ENV);
+
 dotenv.config({path: path.resolve('./config.env')});
 var DB_URL;
 if (process.env.NODE_ENV == "production"){
