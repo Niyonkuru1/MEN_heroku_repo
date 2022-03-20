@@ -452,14 +452,14 @@ FN:9,addBlogRoutes
 FN:13,updateBlogRoutes
 FN:17,deleteBlogRoutes
 FNF:5
-FNH:0
-FNDA:0,homeRoutes
+FNH:1
+FNDA:1,homeRoutes
 FNDA:0,allBlogsRoutes
 FNDA:0,addBlogRoutes
 FNDA:0,updateBlogRoutes
 FNDA:0,deleteBlogRoutes
 DA:1,1
-DA:2,0
+DA:2,1
 DA:5,1
 DA:6,0
 DA:9,1
@@ -469,7 +469,7 @@ DA:14,0
 DA:17,1
 DA:18,0
 LF:10
-LH:5
+LH:6
 BRF:0
 BRH:0
 end_of_record
