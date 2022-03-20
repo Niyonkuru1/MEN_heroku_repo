@@ -7,12 +7,16 @@ chai.should();
 chai.use(chaiHttp);
 
 before((done)=>{
-    Userdb.deleteMany({}, function(err){});
+    Userdb.deleteMany({}, function(err){
+        // console.log(`There is a broblem in cleaning the blogDB before starting to post ${err}`);
+    });
     done();
 })
 
 after((done)=>{
-    Userdb.deleteMany({}, function(err){});
+    Userdb.deleteMany({}, function(err){
+        // console.log(`There is a broblem in cleaning the blogDB before starting to post ${err}`);
+    });
     done();
 })
 

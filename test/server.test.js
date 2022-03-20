@@ -12,7 +12,7 @@ before((done)=>{
 })
 
 after((done)=>{
-    //Blogdb.deleteMany({}, function(err){});
+    Blogdb.deleteMany({}, function(err){});
     done();
 })
 
@@ -84,7 +84,7 @@ describe('/api/blogs TEST on the bloges_DB Collection', () => {
                 expect(blogs[0]).to.have.nested.any.keys('title', 'author', 'body', "__v", "_id","date");
                 expect(len).to.not.be.an('undefined');
                 expect(len).to.be.equal(5);
-                // console.log(len);
+                console.log(len);
                 done();
             })
     })
