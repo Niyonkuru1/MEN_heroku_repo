@@ -1,0 +1,35 @@
+name: Node.JS CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.JS ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: NPM install, build and test
+        run: |
+          npm install
+          npm test
+        env:
+          MONGO_URL_TEST: ${{ secrets.MONGO_URL_TEST }}  
+          SECRET_KEY_DB: ${{ secrets.SECRET_KEY_DB }}  
+          JWT_EXPIRES_IN: ${{ secrets.JWT_EXPIRES_IN }}  

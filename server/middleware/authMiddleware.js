@@ -10,7 +10,7 @@ const requireAuth = (req, res, next)=>{
     // const cookieToken = req.cookies.jwt;
 
     //Grab the token from the header parts of the postman
-    console.log(process.env.SECRET_KEY_DB);
+    // console.log(process.env.SECRET_KEY_DB);
 
     // FORMAT of them coming back => Authorization: Bearer <access_token>
     var bearerHeader;
@@ -19,7 +19,10 @@ if (process.env.NODE_ENV == "production"){
 }
 else if (process.env.NODE_ENV == "test"){
     bearerHeader = req.body.token;
-}   
+} 
+else {
+    bearerHeader = req.headers['authorization'];
+}  
     if (typeof (bearerHeader) !== 'undefined'){
          //split the bearer from string to the array
         let bearerArr = bearerHeader.split(" ");

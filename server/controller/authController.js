@@ -1,5 +1,9 @@
 import Userdb from '../model/authModel';
 import jwt from 'jsonwebtoken';
+import dotenv from "dotenv";
+import  path  from "path";
+
+dotenv.config({path: path.resolve('./config.env')});
 
 
 const handleErrors = (error)=>{
@@ -27,7 +31,7 @@ const handleErrors = (error)=>{
 //function for CREATING A TOKEN FOR AUTHENTICATION
 const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id)=>{
-    return jwt.sign({id}, 'the game secret', {
+    return jwt.sign({id}, process.env.SECRET_KEY_DB, {
         expiresIn: maxAge
     })
 }
