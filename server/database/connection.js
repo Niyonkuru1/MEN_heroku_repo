@@ -18,7 +18,13 @@ else if (process.env.NODE_ENV == "test"){
 
 }
 
-else{
+else if (process.env.MONGO_URL_DEFAULT == "undefined"){
+    process.env.NODE_ENV == "test";
+    DB_URL = process.env.MONGO_URL_TEST;
+    console.log(DB_URL);
+}
+
+else if (process.env.NODE_ENV !== "test" && process.env.NODE_ENV == "production"){
     DB_URL = process.env.MONGO_URL_DEFAULT;
     console.log(DB_URL);
 }
