@@ -1,3 +1,4 @@
+process.env.NODE_ENV == "test";
 import {mongoose} from "mongoose";
 import dotenv from "dotenv";
 import  path  from "path";
@@ -16,12 +17,6 @@ else if (process.env.NODE_ENV == "test"){
     DB_URL = process.env.MONGO_URL_TEST;
     console.log(DB_URL);
 
-}
-
-else if (process.env.MONGO_URL_DEFAULT == "undefined"){
-    process.env.NODE_ENV == "test";
-    DB_URL = process.env.MONGO_URL_TEST;
-    console.log(DB_URL);
 }
 
 else if (process.env.NODE_ENV !== "test" && process.env.NODE_ENV == "production"){
