@@ -1,1 +1,1 @@
-web: npm run coverage
+web: npm run test
