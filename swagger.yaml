@@ -1,0 +1,194 @@
+openapi: 3.0.0
+info:
+  title: MY BRAND MEN
+  description: MongoDb ExpressJS Node API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/
+    description: Localhost Production server
+components:
+  securitySchemes:
+    ApiKeyAuth:        # arbitrary name for the security scheme
+      type: apiKey
+      in: header       # can be "header", "query" or "cookie"
+      name: authorization
+
+  schemas:
+    Blog:
+      type: object
+      properties:
+        title:
+          type: string
+        body:
+          type: string
+        author:
+          type: string
+        date:
+          type: string
+    
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+
+paths:
+
+  /auth/signup:
+    post:
+      summary: Sign Up a new User
+      description: Sign Up a new User in the database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+
+      responses:
+        201:
+          description: User created succesfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  _id:
+                    type: string
+
+  /auth/login:
+    post:
+      summary: Loging in a User
+      description: Loging in a User in order to get JWT token (auth-token)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      
+      responses:
+        200:
+          description: User logged in succesfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  data:
+                    type: string
+
+
+  /api/blogs:
+    get:
+      summary: Retrieves a list of blogs
+      description: Retrieves a list of blogs as JSON objects. 
+      responses:
+        200:
+          description: A list of Blogs JSON objects in an array.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Blog"
+    
+    post:
+      summary: Create a new Blogs
+      description: Create a new Blogs
+      security:
+        - ApiKeyAuth: []      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Blog"
+
+      responses:
+        201:
+          description: Blogs created succesfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Blog"
+  
+  /api/blogs/{id}:
+    get:
+      summary: Specific Blogs
+      description: Retrieves a specific Blogs based on it id. 
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id
+          schema:
+            type: string
+      responses:
+        200:
+          description: A Blogs in the format of a JSON object.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Blog"
+   
+    put:
+      summary: Updates a specific Blog
+      description: Updates a specific Blog based on it id
+      security:
+        - ApiKeyAuth: []            
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id 
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Blog"
+
+      responses:
+        201:
+          description: Blogs updated succesfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Blog"
+
+    delete:
+      summary: Deletes a specific Blogs
+      description: Deletes a specific Blogs based on it id
+      security:
+        - ApiKeyAuth: []            
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id
+          schema:
+            type: string      
+
+      responses:
+        201:
+          description: Blogs deleted succesfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Blog"
