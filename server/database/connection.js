@@ -8,12 +8,12 @@ if (process.env.NODE_ENV == "production"){
     DB_URL = process.env.MONGO_URL;
     console.log(DB_URL);
 }
-else if (process.env.NODE_ENV == "default"){ 
-    DB_URL = process.env.MONGO_URL_DEFAULT;
+else if (process.env.NODE_ENV == "test"){ 
+    DB_URL = process.env.MONGO_URL_TEST;
     console.log(DB_URL);
 }
 else{
-    DB_URL = process.env.MONGO_URL_TEST;
+    DB_URL = process.env.MONGO_URL_DEFAULT;
     console.log(DB_URL);
 }
 
@@ -30,12 +30,10 @@ const connectDB = async () => {
             console.log(`mongoDB connected:${con.connection.host} and is running in
             the ${process.env.NODE_ENV.toLocaleUpperCase()} MODE`);
         }
-        
         else if (process.env.NODE_ENV == "test"){
             console.log(`mongoDB connected:${con.connection.host} and is running in
          the ${process.env.NODE_ENV.toLocaleUpperCase()} MODE`);
         }
-        
         else{
             console.log(`mongoDB connected:${con.connection.host} and is running in
             the DEFAULT MODE`);
