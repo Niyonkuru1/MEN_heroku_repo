@@ -16,7 +16,7 @@ const app = express();
 
 // dotenv.config() 
 dotenv.config({path: path.resolve('./config.env')});
-console.log(process.env.MONGO_URL);/*  as they were the arguments {path:'config.env'} */
+// console.log(process.env.MONGO_URL);/*  as they were the arguments {path:'config.env'} */
 const PORT = process.env.PORT || 8080
 
 // log request. or logging the messages to the node using the morgan just 
