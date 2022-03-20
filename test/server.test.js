@@ -83,7 +83,7 @@ describe('/api/blogs TEST on the bloges_DB Collection', () => {
                 expect(blogs[0]).to.be.an('object');
                 expect(blogs[0]).to.have.nested.any.keys('title', 'author', 'body', "__v", "_id","date");
                 expect(len).to.not.be.an('undefined');
-                expect(len).to.be.equal(5);
+                blogs.should.have.lengthOf(5);
                 console.log(len);
                 done();
             })
