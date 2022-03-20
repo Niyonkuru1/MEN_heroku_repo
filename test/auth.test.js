@@ -103,12 +103,12 @@ it("Should create a valid user into the databse", (done) => {
         .get("/auth/logout")
         .end((err, res) => {
             let users = res.body;
-            res.should.have.status(200);
+            res.should.have.status(202);
             // expect(users).to.be.an('array');
             expect(users).to.be.an('object');
             expect(users).to.have.all.keys('message');
             expect(users.message).to.be.a('string');
-            expect(users.message).to.be.equal("successfully logged out!");
+            expect(users.msg).to.be.equal("You have been Logged Out");
             // console.log(users.message);
             done();
         }) 
