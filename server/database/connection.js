@@ -1,4 +1,4 @@
-process.env.NODE_ENV == "test";
+process.env.NODE_ENV = "test";
 import {mongoose} from "mongoose";
 import dotenv from "dotenv";
 import  path  from "path";
