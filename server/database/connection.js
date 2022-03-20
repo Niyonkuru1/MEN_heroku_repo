@@ -14,6 +14,10 @@ else if (process.env.NODE_ENV == "test"){
     DB_URL = process.env.MONGO_URL_TEST;
 }
 
+else{
+    DB_URL = process.env.MONGO_URL_DEFAULT;
+}
+
 const connectDB = async () => {
     try{
         //mongodb connection string
