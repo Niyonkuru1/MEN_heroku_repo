@@ -47,7 +47,7 @@ describe('/api/blogs TEST on the bloges_DB Collection', () => {
             })
     })
 
-    it("should POST a valid 5 blogs in the database", (done) => {
+    it("should POST a valid  blogs in the database", (done) => {
         let titleArr = ['one','two','three','four','five'];
         let blog;
         titleArr.forEach((post)=>{
@@ -71,7 +71,7 @@ describe('/api/blogs TEST on the bloges_DB Collection', () => {
         done();
     })
 
-    it("Should retrieve 5 blogs from database", (done) => {
+    it("Should retrieve blogs from database", (done) => {
         let len;
         chai.request(app)
             .get("/api/blogs")
