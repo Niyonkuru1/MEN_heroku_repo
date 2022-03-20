@@ -3,23 +3,17 @@ import dotenv from "dotenv";
 import  path  from "path";
 
 dotenv.config({path: path.resolve('./config.env')});
-process.env.NODE_ENV = "test";
 var DB_URL;
-
 if (process.env.NODE_ENV == "production"){
     DB_URL = process.env.MONGO_URL;
     console.log(DB_URL);
-
 }
-
-else if (process.env.NODE_ENV == "test"){
-    DB_URL = process.env.MONGO_URL_TEST;
-    console.log(DB_URL);
-
-}
-
-else if (process.env.NODE_ENV !== "test" && process.env.NODE_ENV == "production"){
+else if (process.env.NODE_ENV == "default"){ 
     DB_URL = process.env.MONGO_URL_DEFAULT;
+    console.log(DB_URL);
+}
+else{
+    DB_URL = process.env.MONGO_URL_TEST;
     console.log(DB_URL);
 }
 

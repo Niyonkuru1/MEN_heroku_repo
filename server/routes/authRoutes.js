@@ -14,7 +14,7 @@ authRoute.post('/login', login_post);
 // auth API
 authRoute.post('/auth/signup',signup_post_contro );
 authRoute.post('/auth/login',login_post_contro );
-authRoute.get('/auth/logout',logout_get_contro );
+authRoute.get('/auth/logout',requireAuth, logout_get_contro);
 authRoute.get('/auth/all-users',requireAuth,get_all_users);
 
 module.exports = authRoute;
