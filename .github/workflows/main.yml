@@ -31,6 +31,7 @@ jobs:
           npm test
         env:
           MONGO_URL_TEST: ${{ secrets.MONGO_URL_TEST }}  
+          NODE_ENV: ${{ secrets.NODE_ENV }}  
           SECRET_KEY_DB: ${{ secrets.SECRET_KEY_DB }}  
           JWT_EXPIRES_IN: ${{ secrets.JWT_EXPIRES_IN }}  
 
