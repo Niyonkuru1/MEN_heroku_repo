@@ -4,6 +4,7 @@ import  path  from "path";
 
 dotenv.config({path: path.resolve('./config.env')});
 
+
 var DB_URL;
 
 if (process.env.NODE_ENV == "production"){
@@ -18,7 +19,7 @@ else if (process.env.NODE_ENV == "test"){
 
 }
 
-else if (process.env.NODE_ENV !== "test" && process.env.NODE_ENV == "production"){
+else{
     DB_URL = process.env.MONGO_URL_DEFAULT;
     console.log(DB_URL);
 }
