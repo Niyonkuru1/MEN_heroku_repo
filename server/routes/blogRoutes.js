@@ -5,7 +5,7 @@ import {
     deleteBlogRoutes, homeRoutes
 } from '../services/render';
 
-import { create, find, findOne, update, delet } from '../controller/blogController';
+import { create, find, update, delet } from '../controller/blogController';
 import requireAuth from '../middleware/authMiddleware';
 
 route.get('/', homeRoutes);

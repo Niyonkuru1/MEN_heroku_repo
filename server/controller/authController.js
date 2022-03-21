@@ -5,7 +5,6 @@ import path from "path";
 
 dotenv.config({ path: path.resolve('./config.env') });
 
-
 const handleErrors = (error) => {
     console.log(error.message, error.code);
     let errors = { email: "", password: "" };
@@ -38,7 +37,8 @@ const createToken = (id) => {
 
 export const signup_post_contro = async (req, res) => {
     const { email, password } = req.body;
-
+    console.log(email);
+    console.log(password);
     try {
         const user = await Userdb.create({ email, password });
         const token = createToken(user._id);
@@ -55,7 +55,7 @@ export const signup_post_contro = async (req, res) => {
     }
     catch (err) {
         const error = handleErrors(err);
-        res.status(400).json({ error });
+        res.status(400).json({ error: err.message });
     }
 }
 
@@ -86,8 +86,6 @@ export const login_post_contro = async (req, res) => {
 
 export const logout_get_contro = (req, res) => {
     // res.cookie('jwt', '', {maxAge:1 });
-    // res.status(200).json({message:"successfully logged out!"});
-    // res.status(200).json({message:"successfully logged out!",  token: null});
     const authHeader = req.headers["authorization"];
     jwt.sign(authHeader, "", { expiresIn: 1 }, (logout, err) => {
         if (logout) {

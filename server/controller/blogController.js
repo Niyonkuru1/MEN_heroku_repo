@@ -3,16 +3,15 @@ import Blogdb from '../model/model';
 
 //create and save new blog
 export const create = (req,res)=>{
-
     //validate request
-    if ( !req.body){
+    if (!req.body){
         res.status(400).send({
             message: "Content can not be empty"
         });
-        return;
     }
     // console.log(req.body);
     //new blog
+  else {
     const bloge = new Blogdb({
         title: req.body.title,
         body: req.body.body,
@@ -32,6 +31,7 @@ export const create = (req,res)=>{
             message: "Some error occured while creating a create operation"
         });
     });
+  }
 
 }
 
