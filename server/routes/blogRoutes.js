@@ -16,7 +16,7 @@ route.get('/delete-blog', requireAuth, deleteBlogRoutes);
 
 
 // API then 
-if (process.env.NODE_ENV == "ptest") {
+if (process.env.NODE_ENV == "test") {
     route.post('/api/blogs', create);
     route.get('/api/blogs', find);
     route.get('/api/blogs/:id', find);

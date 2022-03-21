@@ -1,3 +1,5 @@
+process.env.NODE_ENV = "test";
+
 import Blogdb from "../server/model/model";
 import chai from "chai";
 import chaiHttp from "chai-http";

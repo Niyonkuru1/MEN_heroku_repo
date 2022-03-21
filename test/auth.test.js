@@ -1,3 +1,5 @@
+process.env.NODE_ENV = "test";
+
 import Userdb from "../server/model/authModel";
 import chai from "chai";
 import chaiHttp from "chai-http";
@@ -100,7 +102,7 @@ it("Should create a valid user into the databse", (done) => {
 
   it ("Should successfully logout the user with get request", (done)=>{
     chai.request(app)
-        .get("/auth/logout")
+        .put("/auth/logout")
         .end((err, res) => {
             let users = res.body;
             res.should.have.status(202);
