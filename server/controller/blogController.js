@@ -23,7 +23,7 @@ export const create = (req,res)=>{
     .save(bloge)
     .then ((data) =>{
         // console.log(data);
-        res.status(201).send(data);
+        res.status(201).send({data});
     })
     .catch((error)=>{
         // console(req.body);
@@ -76,7 +76,6 @@ if (!req.body){
     .status(400)
     .send({message: "No content to update, point the correct blog"})
 }
-
 const id = req.params.id;
 Blogdb.findByIdAndUpdate(id, req.body, {userFindAndModify:false})
 .then((data)=>{
@@ -102,6 +101,24 @@ Blogdb.findByIdAndUpdate(id, req.body, {userFindAndModify:false})
     res.status(400).send({message: "Not blog found with the provided ID"})
 })
 }
+
+//add comment to the specified blogs by pushing that information to the array
+export const addComment = (req,res) =>{
+    var newComment = req.body.newCom;
+    console.log(req.params.id);
+    // console.log(newComment);
+Blogdb.findOneAndUpdate(
+   { _id: req.params.id }, 
+   { $push: { comments: newComment  } },
+  function (error, success) {
+        if (error) {
+            console.log(error);
+        } else {
+            // console.log(success);
+            res.status(201).send({message: `comment content created,  ${success.comments}`})
+        }
+    });
+}
 // delete the blog with the blog is specified in the request
 export const delet = (req,res)=>{
     const id = req.params.id;
@@ -110,11 +127,13 @@ export const delet = (req,res)=>{
     .then((data)=>{
         if(!data){
             res.status(403).send({mesage: `Content to delete already doesn't exist`})
+            console.log(data)
         }
         else {
             res.send({
                 message: 'Blogs deleted Successfuly!!'
             })
+            console.log(data)
         }
     })
     .catch((error) =>{

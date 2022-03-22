@@ -15,7 +15,7 @@ authRoute.post('/login', login_post);
 authRoute.post('/auth/signup',signup_post_contro );
 authRoute.post('/auth/login',login_post_contro );
 authRoute.put('/auth/logout',logout_get_contro);
-authRoute.get('/auth/all-users',requireAuth,get_all_users);
+authRoute.get('/auth/all-users',get_all_users);
 
 module.exports = authRoute;
 

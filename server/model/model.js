@@ -10,7 +10,12 @@ var schema = new mongoose.Schema({
         // unique:true
     },
     author: String,
-    date: String
+    date: String,
+
+    comments: [
+        { type: String}
+    ]
+       
 })
 
 const Blogdb = mongoose.model("bloge", schema);

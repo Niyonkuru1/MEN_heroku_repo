@@ -8,7 +8,6 @@ dotenv.config({ path: path.resolve('./config.env') });
 const handleErrors = (error) => {
     console.log(error.message, error.code);
     let errors = { email: "", password: "" };
-
     //duplicate error checking
     if (error.code == 11000) {
         errors['email'] = "The user already exists";
@@ -42,16 +41,18 @@ export const signup_post_contro = async (req, res) => {
     try {
         const user = await Userdb.create({ email, password });
         const token = createToken(user._id);
-        //    res.cookie('jwt', token, {
-        //        httpOnly:true, maxAge: maxAge * 1000
-        //    })
+           res.cookie('jwt', token, {
+               httpOnly:true, maxAge: maxAge * 1000
+           })
+           console.log( res.cookie('jwt', token, {
+            httpOnly:true, maxAge: maxAge * 1000
+        }));
         //    res.status(201).json({user:user._id,token:token});
         res.status(201).json({
             userCred: {
                 email: user.email,
-            }, token: token
+            }, Cookie_token: token 
         })
-
     }
     catch (err) {
         const error = handleErrors(err);
@@ -65,16 +66,16 @@ export const login_post_contro = async (req, res) => {
         const user = await Userdb.login(email, password);
         const token = createToken(user._id);
 
-        // res.cookie('jwt', token, {
-        // httpOnly:true, maxAge: maxAge * 1000
-        // })
+        res.cookie('jwt', token, {
+        httpOnly:true, maxAge: maxAge * 1000
+        })
         // res.status(200).json({user:user._id,token:token})
         res.status(200).json({
             userCred: {
                 email: user.email,
-                status: "Logged In",
-                message: "Welcome again, it is plaesure to have you back!"
-            }, token: token
+                message: "Welcome again, it is pleasure to have you back!"
+            },  Cookie_token: token
+
         })
     }
     catch (err) {
@@ -85,7 +86,7 @@ export const login_post_contro = async (req, res) => {
 
 
 export const logout_get_contro = (req, res) => {
-    // res.cookie('jwt', '', {maxAge:1 });
+    res.cookie('jwt', '', {maxAge:1 });
     const authHeader = req.headers["authorization"];
     jwt.sign(authHeader, "", { expiresIn: 1 }, (logout, err) => {
         if (logout) {

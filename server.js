@@ -4,6 +4,7 @@ import  morgan  from "morgan";
 import  bodyparser from "body-parser"
 import  path  from "path";
 import cookieParser from 'cookie-parser';
+import cors from "cors";
 
 //swagger deps
 import swaggerUi from "swagger-ui-express";
@@ -23,6 +24,7 @@ const PORT = process.env.PORT || 8080
 //as console did in the browser
 app.use(morgan('tiny'));
 app.use(express.static('public'));
+app.use(cors());
 //connect the database to the app by calling the function defined in the 
 // database/connection.js
 
@@ -31,7 +33,7 @@ app.use(bodyparser.urlencoded({extended:true}));
 //this just takes the json type data comes from the submitted form and process it to the regular 
 //javascript we can use
 app.use(express.json());
-app.use(cookieParser())
+app.use(cookieParser());
 
 //swagger setup
 const swaggerDefinition = yaml.load('./swagger.yaml');

@@ -31,12 +31,10 @@ else {
         if(bearerToken){
             jwt.verify(bearerToken,process.env.SECRET_KEY_DB, (err, decodedToken) =>{
                 if(err){
-                    // (err.message)
             // res.redirect('/login');
             res.status(401).json({Error_message:'The action require to login'});
                 }
                 else {
-                    // console.log(decodedToken);
                     next();
                 }
             })

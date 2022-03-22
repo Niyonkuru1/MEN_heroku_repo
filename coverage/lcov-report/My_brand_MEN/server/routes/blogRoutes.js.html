@@ -94,68 +94,77 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import express from 'express';
 const route = express.Router();
-import {allBlogsRoutes, addBlogRoutes, updateBlogRoutes, 
-    deleteBlogRoutes, homeRoutes} from '../services/render';
+import {
+    allBlogsRoutes, addBlogRoutes, updateBlogRoutes,
+    deleteBlogRoutes, homeRoutes
+} from '../services/render';
 &nbsp;
-import {create, find, findOne, update, delet} from '../controller/blogController';
+import { create, find, update, delet } from '../controller/blogController';
 import requireAuth from '../middleware/authMiddleware';
 &nbsp;
-route.get('/',homeRoutes);
-route.get('/all-blog',requireAuth,allBlogsRoutes);
-route.get('/add-blog',requireAuth,addBlogRoutes);
-route.get('/update-blog',requireAuth,updateBlogRoutes);
-route.get('/delete-blog',requireAuth,deleteBlogRoutes);
+route.get('/', homeRoutes);
+route.get('/all-blog', requireAuth, allBlogsRoutes);
+route.get('/add-blog', requireAuth, addBlogRoutes);
+route.get('/update-blog', requireAuth, updateBlogRoutes);
+route.get('/delete-blog', requireAuth, deleteBlogRoutes);
 &nbsp;
 &nbsp;
 // API then 
-<span class="missing-if-branch" title="if path not taken" >I</span>if (process.env.NODE_ENV == "production"){
-<span class="cstat-no" title="statement not covered" >route.</span>post('/api/blogs',requireAuth, create);
-<span class="cstat-no" title="statement not covered" >route.</span>get('/api/blogs', find);
-<span class="cstat-no" title="statement not covered" >route.</span>get('/api/blogs/:id', find);
-<span class="cstat-no" title="statement not covered" >route.</span>put('/api/blogs/:id',requireAuth, update);
-<span class="cstat-no" title="statement not covered" >route.</span>delete('/api/blogs/:id',requireAuth, delet);
-}
-&nbsp;
-else {
+<span class="missing-if-branch" title="else path not taken" >E</span>if (process.env.NODE_ENV == "test") {
     route.post('/api/blogs', create);
     route.get('/api/blogs', find);
     route.get('/api/blogs/:id', find);
     route.put('/api/blogs/:id', update);
     route.delete('/api/blogs/:id', delet);
-    }
+}
+&nbsp;
+else {
+<span class="cstat-no" title="statement not covered" >    route.</span>post('/api/blogs', requireAuth, create);
+<span class="cstat-no" title="statement not covered" >    route.</span>get('/api/blogs', find);
+<span class="cstat-no" title="statement not covered" >    route.</span>get('/api/blogs/:id', find);
+<span class="cstat-no" title="statement not covered" >    route.</span>put('/api/blogs/:id', requireAuth, update);
+<span class="cstat-no" title="statement not covered" >    route.</span>delete('/api/blogs/:id', requireAuth, delet);
+}
+&nbsp;
 module.exports = route;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -163,7 +172,7 @@ module.exports = route;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sun Mar 20 2022 12:22:30 GMT+0200 (South Africa Standard Time)
+                at Mon Mar 21 2022 16:02:59 GMT+0200 (South Africa Standard Time)
             </div>
         <script src="../../../prettify.js"></script>
         <script>
