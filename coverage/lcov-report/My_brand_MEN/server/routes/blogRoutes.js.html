@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.27% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/22</span>
+                <span class='fraction'>12/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.27% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/22</span>
+                <span class='fraction'>12/18</span>
             </div>
         
             
@@ -87,34 +87,13 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -124,6 +103,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -132,35 +112,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import express from 'express';
-const route = express.Router();
-import {
-    allBlogsRoutes, addBlogRoutes, updateBlogRoutes,
-    deleteBlogRoutes, homeRoutes
-} from '../services/render';
-&nbsp;
-import { create, find, update, delet } from '../controller/blogController';
+import { create, find, update, delet, addComment } from '../controller/blogController';
 import requireAuth from '../middleware/authMiddleware';
-&nbsp;
-route.get('/', homeRoutes);
-route.get('/all-blog', requireAuth, allBlogsRoutes);
-route.get('/add-blog', requireAuth, addBlogRoutes);
-route.get('/update-blog', requireAuth, updateBlogRoutes);
-route.get('/delete-blog', requireAuth, deleteBlogRoutes);
-&nbsp;
+const route = express.Router();
 &nbsp;
 // API then 
-<span class="missing-if-branch" title="else path not taken" >E</span>if (process.env.NODE_ENV == "test") {
+<span class="missing-if-branch" title="else path not taken" >E</span>if (process.env.NODE_ENV == "test" || <span class="branch-1 cbranch-no" title="branch not covered" >process.env.NODE_ENV == "production") {</span>
     route.post('/api/blogs', create);
     route.get('/api/blogs', find);
     route.get('/api/blogs/:id', find);
+    route.put('/api/blogs/addcom/:id',addComment);
     route.put('/api/blogs/:id', update);
-    route.delete('/api/blogs/:id', delet);
+    route.delete('/api/blogs/:id', requireAuth, delet);
 }
 &nbsp;
 else {
 <span class="cstat-no" title="statement not covered" >    route.</span>post('/api/blogs', requireAuth, create);
 <span class="cstat-no" title="statement not covered" >    route.</span>get('/api/blogs', find);
 <span class="cstat-no" title="statement not covered" >    route.</span>get('/api/blogs/:id', find);
+<span class="cstat-no" title="statement not covered" >    route.</span>put('/api/blogs/addcom/:id',addComment);
 <span class="cstat-no" title="statement not covered" >    route.</span>put('/api/blogs/:id', requireAuth, update);
 <span class="cstat-no" title="statement not covered" >    route.</span>delete('/api/blogs/:id', requireAuth, delet);
 }
@@ -172,7 +142,7 @@ module.exports = route;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Mar 21 2022 16:02:59 GMT+0200 (South Africa Standard Time)
+                at Tue Mar 22 2022 21:06:05 GMT+0200 (South Africa Standard Time)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

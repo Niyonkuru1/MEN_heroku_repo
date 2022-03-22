@@ -6,25 +6,19 @@ import path from "path";
 dotenv.config({ path: path.resolve('./config.env') });
 
 const handleErrors = (error) => {
-    console.log(error.message, error.code);
-    let errors = { email: "", password: "" };
+    // console.log(error.message, error.code);
+    let errors = { message:""};
     //duplicate error checking
     if (error.code == 11000) {
-        errors['email'] = "The user already exists";
+        errors['message'] = "The user already exists";
         return errors;
     }
-
     //validation errors
     if (error.message.includes('user validation failed')) {
-        // console.log(Object.values(error.errors));
-        Object.values(error.errors).forEach((er) => {
-            // console.log(er.properties);
-            errors[er.properties.path] = er.properties.message;
-        });
-        // console.log( `email_error  is ${errors.email} and the password_error is ${errors.email}`)
+        errors['message'] = "Enter minimum 6 character of password";
+        return errors;
+        };
     }
-    return errors;
-}
 
 //function for CREATING A TOKEN FOR AUTHENTICATION
 const maxAge = 3 * 24 * 60 * 60;
@@ -44,19 +38,17 @@ export const signup_post_contro = async (req, res) => {
            res.cookie('jwt', token, {
                httpOnly:true, maxAge: maxAge * 1000
            })
-           console.log( res.cookie('jwt', token, {
-            httpOnly:true, maxAge: maxAge * 1000
-        }));
-        //    res.status(201).json({user:user._id,token:token});
         res.status(201).json({
             userCred: {
                 email: user.email,
-            }, Cookie_token: token 
+            }, token: token 
         })
     }
     catch (err) {
         const error = handleErrors(err);
-        res.status(400).json({ error: err.message });
+        res.status(400).json({ message: error.message });
+        console.log(error.message)
+        // console.log(err.message);
     }
 }
 
@@ -74,8 +66,7 @@ export const login_post_contro = async (req, res) => {
             userCred: {
                 email: user.email,
                 message: "Welcome again, it is pleasure to have you back!"
-            },  Cookie_token: token
-
+            },  token: token
         })
     }
     catch (err) {

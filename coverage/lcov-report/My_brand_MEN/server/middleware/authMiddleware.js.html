@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/20</span>
+                <span class='fraction'>16/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>5/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/20</span>
+                <span class='fraction'>16/20</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -119,9 +119,7 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -137,30 +135,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -185,7 +181,7 @@ import  path  from "path";
 &nbsp;
 dotenv.config({path: path.resolve('./config.env')});
 &nbsp;
-const <span class="fstat-no" title="function not covered" >requireAuth </span>= (req, res, next)=&gt;{
+const requireAuth = (req, res, next)=&gt;{
 &nbsp;
     //grabbing token from the cookies section of the each and every request made
     // const cookieToken = req.cookies.jwt;
@@ -195,30 +191,28 @@ const <span class="fstat-no" title="function not covered" >requireAuth </span>= 
 &nbsp;
     // FORMAT of them coming back =&gt; Authorization: Bearer &lt;access_token&gt;
     var bearerHeader;
-<span class="cstat-no" title="statement not covered" >if (process.env.NODE_ENV == "production"){</span>
+<span class="missing-if-branch" title="if path not taken" >I</span>if (process.env.NODE_ENV == "production"){
 <span class="cstat-no" title="statement not covered" >    bearerHeader </span>= req.headers['authorization'];
 }
-else <span class="cstat-no" title="statement not covered" >if (process.env.NODE_ENV == "test"){</span>
-<span class="cstat-no" title="statement not covered" >    bearerHeader </span>= req.body.token;
+else <span class="missing-if-branch" title="else path not taken" >E</span>if (process.env.NODE_ENV == "test"){
+    bearerHeader = req.body.token;
 } 
 else {
 <span class="cstat-no" title="statement not covered" >    bearerHeader </span>= req.headers['authorization'];
 }  
-<span class="cstat-no" title="statement not covered" >    if (typeof (bearerHeader) !== 'undefined'){</span>
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof (bearerHeader) !== 'undefined'){
          //split the bearer from string to the array
-        let bearerArr = <span class="cstat-no" title="statement not covered" >bearerHeader.</span>split(" ");
-        const bearerToken = <span class="cstat-no" title="statement not covered" >bearerArr[1</span>];
+        let bearerArr = bearerHeader.split(" ");
+        const bearerToken = bearerArr[1];
     //get the token from the array
-<span class="cstat-no" title="statement not covered" >        if(bearerToken){</span>
-<span class="cstat-no" title="statement not covered" >            jwt.</span>verify(bearerToken,process.env.SECRET_KEY_DB, <span class="fstat-no" title="function not covered" >(e</span>rr, decodedToken) =&gt;{
-<span class="cstat-no" title="statement not covered" >                if(err){</span>
-                    // (err.message)
+        <span class="missing-if-branch" title="else path not taken" >E</span>if(bearerToken){
+            jwt.verify(bearerToken,process.env.SECRET_KEY_DB, (err, decodedToken) =&gt;{
+                <span class="missing-if-branch" title="if path not taken" >I</span>if(err){
             // res.redirect('/login');
 <span class="cstat-no" title="statement not covered" >            res.</span>status(401).json({Error_message:'The action require to login'});
                 }
                 else {
-                    // console.log(decodedToken);
-<span class="cstat-no" title="statement not covered" >                    next();</span>
+                    next();
                 }
             })
         }
@@ -244,7 +238,7 @@ export default requireAuth;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Mar 21 2022 16:02:59 GMT+0200 (South Africa Standard Time)
+                at Tue Mar 22 2022 21:06:05 GMT+0200 (South Africa Standard Time)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -23,7 +23,7 @@ export const create = (req,res)=>{
     .save(bloge)
     .then ((data) =>{
         // console.log(data);
-        res.status(201).send({data});
+        res.status(201).send(data);
     })
     .catch((error)=>{
         // console(req.body);
@@ -48,7 +48,7 @@ export const find = (req,res)=>{
             }
             else {
                 // res.send(data)
-                res.json(data)
+                res.status(200).json(data);
             }
         })
         .catch((error)=>{
@@ -115,7 +115,7 @@ Blogdb.findOneAndUpdate(
             console.log(error);
         } else {
             // console.log(success);
-            res.status(201).send({message: `comment content created,  ${success.comments}`})
+            res.status(201).send({message: `comment content created`})
         }
     });
 }
@@ -130,15 +130,15 @@ export const delet = (req,res)=>{
             console.log(data)
         }
         else {
-            res.send({
+            res.status(202).send({
                 message: 'Blogs deleted Successfuly!!'
             })
-            console.log(data)
+            // console.log(data)
         }
     })
     .catch((error) =>{
         res.status(500).send({
-            message: `Could not delete the blog with id = ${id}`
+            message: `Error occured while deleting the blog`
         });
     });
 }
