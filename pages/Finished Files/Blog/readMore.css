@@ -1,0 +1,133 @@
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: #263238;
+    background-color: #BFD8BD;
+}
+
+
+#wrapper-main {
+    margin: 2em;
+    display: grid;
+    height: 100vh;
+    grid-template-columns:repeat(2, 1fr);
+    grid-template-rows: 1fr 1.5fr 1.5fr 1.5fr;
+    gap: 2em;
+    /* grid-template-areas: */
+}
+
+.title {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.header {
+    width: 50%;
+}
+
+.header > h3 {
+    font-size: 3em;
+}
+
+.header > h3 > span {
+    color: #EB00FF;
+    padding-bottom: 0.2em;
+    border-bottom:0.2em solid #EB00FF;
+    letter-spacing: 0.2em;
+}
+
+
+.header p {
+    font-size: 2em;
+    padding-top: 2em;
+}
+
+/* Navbar start */
+.navbar {
+    width: 100vw;
+    background-color:rgb(190, 146, 231);
+    margin: 0;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 4em;
+    height: 100%
+}
+.navbar ul li {
+    padding-right: 2em;
+    font-weight:bold;
+    /* height: 100%; */
+    /* background-color: ; */
+}
+.navbar ul li a {
+
+    color: white;
+}
+.navbar ul li a:hover {
+    background-color: #1d1b1d;
+}
+ul a {
+    text-decoration: none;
+}
+.navbar ul li:first-child {
+    margin-right: auto;
+    margin-left: 2em;
+}
+
+
+/* content section starts here */
+.content {
+    justify-items: center;
+    width:85%;
+    margin-left: 5em;
+    display: flex;
+}
+.left {
+    flex-grow: 1;
+    flex:1;
+    text-align: center;
+    /* border: 1px solid black; */
+  }
+
+  .right {
+    flex: 2;
+    margin: 2em;
+  }
+
+  hr {
+    border:0.3em solid #EB00FF;
+  }
+
+  .button{
+      margin-bottom: 4em;
+      background-color: rgb(190, 146, 231);
+      border-radius: 1em;
+      padding: .6em;
+      color:white;
+      width: 50%;
+    }
+.button:hover {
+        background-color:#EB00FF;
+        transition: 0.7s;
+        cursor: pointer;
+    }
+
+a {
+    text-decoration: none;
+}
+  

@@ -19,12 +19,12 @@
           console.log(targetRowIdToDelete);
            //to delete the specified blog with id from the (DATABASE)
           //  deleteDoc(docRef)
-          fetch(`https://my-brand-men-heroku.herokuapp.com/${targetRowIdToDelete}`, {
+          fetch(`https://my-brand-men-heroku.herokuapp.com/api/blogs/${targetRowIdToDelete}`, {
             method: "DELETE",
             credentials: 'same-origin',
             mode: 'cors',
             headers: {
-                "Content-type": "application/json",
+                "Content-Type": "application/json",
                 "authorization": localStorage.getItem("token")
             },
             // body: JSON.stringify(textAreaValue)
@@ -44,7 +44,7 @@
         var body1;
         // getDoc(docRef)
         // 
-        fetch(`https://my-brand-men-heroku.herokuapp.com/${targetRowIdToDelete}`, {
+        fetch(`https://my-brand-men-heroku.herokuapp.com/api/blogs/${targetRowIdToDelete}`, {
           method: "GET",
           credentials: 'same-origin',
           mode: 'cors',
@@ -80,7 +80,7 @@
         //   CreatedAt: serverTimestamp()
         //  }).
         // let updatePostData = 
-        fetch(`https://my-brand-men-heroku.herokuapp.com/${id}`, {
+        fetch(`https://my-brand-men-heroku.herokuapp.com/api/blogs/${id}`, {
           method: "PUT",
           credentials: 'same-origin',
           mode: 'cors',

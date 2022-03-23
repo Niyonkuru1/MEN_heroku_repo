@@ -10,7 +10,6 @@ body {
 * {
     margin: 0;
 }
-
 /* Navbar start */
 .navbar {
     width: 100vw;
@@ -168,9 +167,7 @@ div > #addComArr {
 .button {
     justify-self: center;
 }
-.comment {
-    /* margin-left: 7em; */
-}
+
 
 
 @media screen and (max-width:900px){
@@ -245,9 +242,7 @@ div > #addComArr {
     font-weight: 500;
     margin-top: 6rem;
 }
-.articles .author{
 
-}
 
 #article1 div, #article2 div, #article3 div, #article4 div,
 #article5 div, #article6 div{
@@ -269,7 +264,7 @@ hr{
 
 /* FOOTER SECTION START */
 .footerMain {
-    background-color:black;
+    background-color:#a980b8;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows:20%;

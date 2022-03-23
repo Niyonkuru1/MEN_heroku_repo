@@ -32,22 +32,10 @@ loginForm.addEventListener('submit', (e) => {
   e.preventDefault()
   const email = loginForm.email.value;
   const password = loginForm.password.value
-
-  // signInWithEmailAndPassword(auth, email, password)
-  // .then((cred)=> {
-  //     console.log("User loged in: ", cred.user)
-  //     // generate_table();
-  //     startAdminPage();
-  // })
-  // .catch((err)=> {
-  //     console.log(err.message)
-  // })
-
   let loginCredentials = {
     email: email,
     password: password
   }
-
   fetch('https://my-brand-men-heroku.herokuapp.com/auth/login', {
     method: "POST",
     headers: {
@@ -57,20 +45,40 @@ loginForm.addEventListener('submit', (e) => {
   })
     .then(response => response.json())  
 .then( res => {
+  console.log(res.response);
+  // removePreAddedbutton();
+  if (res.response == "Incorrect Email" || res.response == "Incorrect password"){
+    LoginMessage(res.response);
+  }
   let response = `Bearer ${res.token}`;
     localStorage.setItem('token', response);
-    if (loginCredentials.email == res.userCred.email){
+  if (loginCredentials.email == res.userCred.email){
                startAdminPage();
-    }
-    else {
-      console.log(res.response);
     }
     // localStorage.removeItem("token");
 } );
-} );
+});
 function startAdminPage() {
   window.location.href = '../../admin/posts/index.html';
   // window.location.replace('https://developer.mozilla.org/en-US/docs/Web/API/Location.reload')
+}
+
+function LoginMessage(errorMessage){
+  let form = document.getElementById("login");
+  // let formLastItem = document.getElementById("login");
+  let inputEl = document.createElement("input")
+  inputEl.setAttribute("value", errorMessage)
+  inputEl.setAttribute("type", "text")
+  inputEl.setAttribute("class", "field")
+  inputEl.setAttribute("id", "ErrorMessage")
+  form.appendChild(inputEl)
+  // form.insertBefore(formLastItem, inputEl);
+  // <input type="password" class="field" name ="password" placeholder="Enter your password">
+}
+
+function removePreAddedbutton(){
+  let addedData = document.getElementById("ErrorMessage");
+  addedData.remove();
 }
 
   // ------ This is what you have to add --------
