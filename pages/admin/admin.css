@@ -1,0 +1,199 @@
+body{
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+    width: 100vw;
+    background-color:rgb(190, 146, 231);
+    margin: 0;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding: 0 3em;
+    height: 4em;
+    height: 100%
+}
+
+.navbar ul li {
+    padding-right: 2em;
+    font-weight:bold;
+    /* height: 100%; */
+    /* background-color: ; */
+}
+
+
+.navbar ul li a {
+
+    color: white;
+}
+
+.navbar ul li a:hover {
+    background-color: #1d1b1d;
+    height: 100vh;
+}
+
+ul a {
+    text-decoration: none;
+}
+
+.navbar ul li:first-child {
+    margin-right: auto;
+    margin-left: 2em;
+}
+
+/* form{
+    display: grid;
+    grid-template-columns: 1fr;
+} */
+
+.admin-wrapper {
+    display: flex;
+    height: calc(100% - 64px);
+    /* border: 2px solid red; */
+}
+
+.admin-wrapper .left-sidebar{
+    flex:2;
+    height: 100%;
+    background-color: #588b81;
+    
+    /* border: 2px solid green; */
+}
+.admin-wrapper .left-sidebar ul{
+    list-style: none;
+    color: white;
+    margin: 0;
+    padding: 0;
+
+}
+
+.admin-wrapper .left-sidebar ul a {
+    display: block;
+    color: white;
+    padding: 18px;
+    /* background-color:#c0d4d0; */
+    border: 1px solid rgb(190, 146, 231);
+}
+
+.admin-wrapper .left-sidebar ul li a:hover {
+    background-color: #1d1b1d;
+}
+
+.admin-wrapper .admin-content{
+    flex:8;
+    height: 100%;
+    padding: 40px 100px 100px;
+    overflow-y: scroll;
+    /* background-color: blue; */
+    
+    /* border: 2px solid blue; */
+
+}
+
+.admin-content .page-title{
+    text-align: center;
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+    
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.2em;
+}
+
+th,td {
+    padding: 1em;
+    text-align: left;
+    border-bottom: 1.5px solid rgb(190, 146, 231);
+}
+
+table tbody tr td a {
+    text-decoration:none;
+    /* color: rgb(101, 1, 194); */
+}
+
+.edit {
+    color: rgb(136, 8, 255);
+}
+.delete{
+    color:red;
+}
+
+.publish{
+    color: #EB00FF ;
+}
+
+table tbody tr td a:hover{
+   border-bottom: 3px solid rgb(136, 8, 255);
+}
+
+.button-group .btn-btn-big{
+    background-color: rgb(190, 146, 231);
+    padding: 1em;
+    font-size: 1em;
+    /* width: 5em; */
+    border-radius: 0.3em;
+    margin: 0 0.5em
+}
+
+form .btn-big{
+    background-color: rgb(190, 146, 231);
+    padding: 1em;
+    font-size: 1em;
+    border: none;
+    border-radius: 0.3em;
+    /* margin-top: 3em; */
+    margin: 0 0.5em;
+    margin-top: 2em;
+    color: white;
+}
+
+form .btn-big:hover{
+    background-color: #1d1b1d;
+}
+
+.button-group a {
+    text-decoration: none;
+    color:white;
+}
+
+.button-group a:hover{
+    background-color: #1d1b1d;
+}
+
+form {
+    margin-top: 10em;
+}
+
+/* Form style start */
+.field{
+    width: 100%;
+    outline: none;
+    margin: 0;
+    border: 2px solid rgba(0, 0, 0, 0);
+    padding: 0.5rem 1rem;
+    background-color: rgba(230,230,230,0.6);
+    font-size: 1.1rem;
+    margin-bottom: 1.6rem;
+    border: 1px solid rgba(12, 12, 12, 0.1);
+    transition: .3s;
+}
+.field:hover{
+    background-color: rgba(0, 0, 0, 0.1);;
+}
+.field:focus {
+    background-color: #fff;
+    border: 2px solid rgb(190, 146, 231,0.6);
+}
+.area{
+    min-height: 150px;
+}
+/* Form style end */

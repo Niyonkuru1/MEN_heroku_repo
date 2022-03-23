@@ -1,0 +1,192 @@
+body {
+    background-color: #BFD8BD;
+    
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+}
+
+.body {
+    display: flex;
+    margin-left: 10%;
+    margin-right: 5%;
+    flex-direction: column;
+}
+
+ .navbar {
+    width: 90%;
+    margin: 0;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 4em;
+    height: 100%
+}
+
+.navbar ul li {
+    padding-right: 2em;
+    font-weight:bold;
+}
+
+
+.navbar ul li a {
+    color:  #1d1b1d;
+}
+
+.navbar ul li a:hover {
+    height: 100vh;
+}
+ul a {
+    text-decoration: none;
+}
+
+.navbar ul li:first-child {
+    margin-right: auto;
+    margin-left: 2em;
+}
+.main {
+    display: flex;
+    flex-direction: row;
+    font-size: 24px;
+    margin-top: 3em;
+    margin-bottom: 2em;
+}
+
+.mainRight>img {
+    width: 100%;
+    height: auto;
+}
+
+.mainRight {
+    padding: 3em 2em 2em 0;
+    flex-basis: 60em;
+    align-items: center;
+}
+
+.mainLeft>div {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.mainLeft>p {
+    padding: 1em 0 1.5em 0;
+    margin: unset;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    padding-top: 4em;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.line {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.border {
+    width: 111px;
+    height: 4px;
+    border-top: 5px solid #CA8ECF;
+    margin-top: 12px;
+}
+
+.topSection {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5em;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    flex-direction: row;
+    color: black;
+}
+
+ul li {
+    padding-right: 1em;
+}
+
+ul>li>a {
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+ul a:hover {
+    color: #210424;
+    border-bottom: 5px solid #eb00ff;
+}
+
+.bottomRect {
+    background-color: #eb00ff;
+    color: #eb00ff;
+    height: 3.5em;
+}
+
+#colouser {
+    margin-top: 2em;
+}
+
+.colouser {
+    margin-top: 0.5em;
+}
+
+.header>h3 {
+    display: flex;
+    flex-direction: row;
+    color: #CA8ECF;
+    font-size: 24px;
+    margin: unset;
+    justify-content: center;
+}
+
+
+.header>h2 {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin: unset;
+}
+
+.button {
+    background-color: #eb00ff;
+    padding: 0.25em 0.7em;
+    border-radius: 0.8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #1d1b1d;
+}
+
+.button a {
+    text-decoration: none;
+    font-size: 24px;
+    color: white;
+    justify-content: center;
+}
+
+
+
+
+

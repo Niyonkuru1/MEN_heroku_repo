@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../admin.css">
+    <!-- <link rel="stylesheet" href="/pages/Finished Files/Contact-page/contacting.css"> -->
+    <title>Admin section - Add Post</title>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <!-- <li id="svg">
+                <img src="/images/Logo.svg" alt="">
+            </li> -->
+            <li><a href="../../Finished Files/Landing-page/index.html">HOME</a></li>
+            <li><a href="../../Finished Files/About-page/about.html">ABOUT</a></li>
+            <li><a href="../../Finished Files/Blog/blog.html">BLOG</a></li>
+        </ul>
+    </div>
+    <div class="admin-wrapper">
+        <!-- Leftside bar -->
+        <div class="left-sidebar">
+            <ul>
+                <li><a href="index.html">Manage Post</a></li>
+                <li><a href="../comment/index.html">Manage Comment</a></li>
+            </ul>
+        </div>
+        <!-- // Leftside bar -->
+
+        <!-- Admin Content -->
+        <div class="admin-content">
+            <div class="button-group">
+                <!-- <a href="create.html" class="btn-btn-big">Create New Post</a> -->
+                <a href="index.html" class="btn-btn-big">Manage Post</a>
+            </div>
+
+            <div class="content">
+                <h2 class="page-title">Create New Article</h2>
+                <form action="create.html" method="post" id="posti">
+                    <div>
+                    <label>Title</label>
+                    <input type="text" name="title" class="field" ></div>
+                    <div>
+                    <label>Body</label>
+                    <textarea name="body" id="body" class="field"></textarea></div>
+                    <div>
+                    <button type="submit" class="btn-big">
+                        Add Post 
+                    </button></div>
+                </form>
+            </div>
+        </div>
+        <!-- // Admin Content -->
+    </div>
+    <!-- CKeditor 5 for bringing the texteditor which looks more closely to the word editor -->
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/32.0.0/classic/ckeditor.js"></script> -->
+    <!-- <script src="/JS/script.js"></script> -->
+
+    <script type="module" src="../admin.js"></script>
+    <script type="module" src="../posts/interaction.js"></script>
+
+    <!-- <script src="interaction.js"></script> -->
+</body>
+
+</html>

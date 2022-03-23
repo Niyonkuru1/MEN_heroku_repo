@@ -1,0 +1,80 @@
+/* STYLE FOR 360PX SCREEN */
+/* @media screen and (min-width : 360px ){ */
+    #ThemainContent {
+        background-color: aqua;
+        /* margin: 1em 2em 1em 2em; */
+        display: grid;
+        grid: auto-flow min-content/1fr;
+        grid-template-areas: 'navigationBar'
+                                'mainLeft'
+                                'mainRight'
+                                'title'
+                                'mainLeft1'
+                                'mainRight2'
+                                'title1'
+                                'container'
+                                'footer1';
+        grid-gap: 1em;
+     padding: 2em 1em 2em 1em;
+        /* width: 500px */
+    }
+    
+    .mainRight{
+        grid-area: mainRight;
+    
+    } 
+    .mainLeft{
+        grid-area: mainLeft;
+    }
+    .navigationBar {
+        grid-area: navigationBar;
+    }
+    
+    .title{
+        grid-area: title;
+    }
+    
+    .mainLeft1{
+        grid-area: mainLeft1;
+    }
+    
+    .mainRight2{
+        grid-area: mainRight2;
+    }
+    .title1{
+        grid-area: title1;
+    }
+    
+    .container{
+        grid-area: container;
+        
+    }
+    /* .containers {
+        display: grid;
+        grid: auto-flow max-content / repeat(12);
+        grid-gap: 0.5em;
+    } */
+    
+    .footer1 {
+        grid-area: footer1;
+    }
+
+    .pies img {
+        grid-column: span 12;;
+    }
+    
+    .mainLeft,.mainRight > img, .title, 
+    .mainLeft1, .mainRight2,.title1,
+    .container>image, .footer1 {
+        width: 100%
+    }
+/* } */
+
+/* @media screen and (min-width : 360px ){ */
+
+/* } */
+/* END OF STYLE FOR 360PX SCREEN */
+
+
+
+

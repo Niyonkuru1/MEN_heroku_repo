@@ -1,0 +1,18 @@
+
+.footerMain {
+    background-color:black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:20%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+}
+
+.footer2{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    text-align: center;
+}
+.footer2 > p > span {
+    color: blueviolet;
+}

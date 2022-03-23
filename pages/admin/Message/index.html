@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <link rel="stylesheet" href="../admin.css">
+    <title>BlogAdminPage</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <li id="svg">
+                <img src="/images/Logo.svg" alt="">
+            </li>
+            <li><a href="/index.html">HOME</a></li>
+            <!-- <li><a href="/html pages/about page.html">ABOUT</a></li>
+            <li><a href="">SKILLS</a></li>
+            <li><a href="">PROJECT</a></li> -->
+            <li><a href="">BLOG</a></li>
+            <!-- <li><a href="">Sign In</a></li> -->
+            <li><a href=" " id="logout">LOG OUT</a></li>
+        </ul>
+    </div>
+    <div class="admin-wrapper">
+        <!-- Leftside bar -->
+        <div class="left-sidebar">
+            <ul>
+                <li><a href="../posts/index.html">Manage Post</a></li>
+                <li><a href="../Message/">Manage Message</a></li>
+            </ul>
+        </div>
+        <!-- // Leftside bar -->
+
+        <!-- Admin Content -->
+        <div class="admin-content">
+            <div class="button-group">
+                <a href="create.html" class="btn-btn-big">Reply Messages</a>
+                <!-- <a href="index.html" class="btn-btn-big">Manage Post</a> -->
+            </div>
+
+            <div class="content">
+                <h2 class="page-title">Manage Message</h2>
+
+                <table id="table">
+                    <thead>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Time Created</th>
+                        <th colspan="1">Action</th>
+                    </thead>
+                    <tbody id="items">
+                        <!-- This should come from database YET!!! -->
+                        <!-- <tr>
+                            <td>1</td>
+                            <td>This is the first post</td>
+                            <td>Awa</td>
+                            <td><a href="#" class="edit">View all coments</a></td>
+                            <td><a href="#" class="delete">delete Messages</a></td>
+                             <td><a href="#" class="publish">publish</a></td> 
+                        </tr> -->
+                    </tbody>
+                </table>
+
+                <script type="module" 
+                src='../../Finished Files/Contact-page/displayContact.js'></script>
+            </div>
+        </div>
+        <!-- // Admin Content -->
+
+    </div>
+</body>
+
+</html>
