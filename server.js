@@ -6,15 +6,16 @@ import  path  from "path";
 import cookieParser from 'cookie-parser';
 import cors from "cors";
 
+// import cors from "cors";
+
 //swagger deps
 import swaggerUi from "swagger-ui-express";
 import yaml from "yamljs";
 
 import  connectDB  from './server/database/connection.js';
 // app.use(_path);
-
 const app = express();
-
+app.use(cors());
 // dotenv.config() 
 dotenv.config({path: path.resolve('./config.env')});
 // console.log(process.env.MONGO_URL);/*  as they were the arguments {path:'config.env'} */
@@ -24,7 +25,7 @@ const PORT = process.env.PORT || 8080
 //as console did in the browser
 app.use(morgan('tiny'));
 app.use(express.static('public'));
-app.use(cors());
+// app.use(cors());
 //connect the database to the app by calling the function defined in the 
 // database/connection.js
 
@@ -34,6 +35,13 @@ app.use(bodyparser.urlencoded({extended:true}));
 //javascript we can use
 app.use(express.json());
 app.use(cookieParser());
+// app.use(function (req, res, next) {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+//     res.setHeader('Access-Control-Allow-Credentials', true);
+//     next();
+//     });
 
 //swagger setup
 const swaggerDefinition = yaml.load('./swagger.yaml');
@@ -41,7 +49,12 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDefinition));
 
 // view engine ( where the parser will get the data from
 // in terms of format )
-app.set('view engine','ejs')
+app.set('view engine','ejs');
+
+app.get("/", (req,res)=>{
+    res.cookie("JEWUTEE","it is not working right now",{httpOnly:true});
+    res.send({message:"welcome to the routes"})
+})
 // app.set('views', path.resolve(__dirname,'views/ejs')) in case your 
 // ejs files are inside the ejs folder of the views folder
 

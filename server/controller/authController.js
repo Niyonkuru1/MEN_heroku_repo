@@ -6,7 +6,6 @@ import path from "path";
 dotenv.config({ path: path.resolve('./config.env') });
 
 const handleErrors = (error) => {
-    // console.log(error.message, error.code);
     let errors = { message:""};
     //duplicate error checking
     if (error.code == 11000) {
@@ -28,6 +27,14 @@ const createToken = (id) => {
     })
 }
 
+export const log =  (req,res)=>{
+    res.cookie("ERIKE","RWANDA",{httpOnly:true, maxAge:maxAge});
+    res.send({
+        message:"welcome WILLIAMS AMARURAWE to the routes COOKIES",
+        test:"no it is not you whom i need"
+})
+}
+
 export const signup_post_contro = async (req, res) => {
     const { email, password } = req.body;
     console.log(email);
@@ -38,6 +45,7 @@ export const signup_post_contro = async (req, res) => {
            res.cookie('jwt', token, {
                httpOnly:true, maxAge: maxAge * 1000
            })
+           console.log(token);
         res.status(201).json({
             userCred: {
                 email: user.email,
@@ -52,17 +60,22 @@ export const signup_post_contro = async (req, res) => {
     }
 }
 
+// export const login = (req,res) =>{
+//     res.send({message:"hello"})
+// }
 export const login_post_contro = async (req, res) => {
     const { email, password } = req.body;
+    console.log(email, password)
+    // res.send({message:"hello"})
     try {
         const user = await Userdb.login(email, password);
         const token = createToken(user._id);
-
+        console.log(token)
         res.cookie('jwt', token, {
         httpOnly:true, maxAge: maxAge * 1000
         })
         // res.status(200).json({user:user._id,token:token})
-        res.status(200).json({
+        res.status(200).send({
             userCred: {
                 email: user.email,
                 message: "Welcome again, it is pleasure to have you back!"

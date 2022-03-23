@@ -4,8 +4,8 @@ info:
   description: MongoDb ExpressJS Node API
   version: 1.0.0
 servers:
-  - url: https://my-brand-men-heroku.herokuapp.com/
-    description: Localhost Production server
+  - url: http://localhost:3000/
+    description: Localhost Default server
 components:
   securitySchemes:
     ApiKeyAuth:        # arbitrary name for the security scheme

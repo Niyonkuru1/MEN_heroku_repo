@@ -11,19 +11,11 @@ chai.use(chaiHttp);
 
 before((done) => {
     Userdb.deleteMany({}, function (err) {
-        // console.log(`There is a broblem in cleaning the blogDB before starting to post ${err}`);
     });
     done();
 })
 
-after((done) => {
-    // Userdb.deleteMany({}, function (err) {
-    // });
-    done();
-})
-
 describe('/auth/sign TEST on the bloges_DB Collection', () => {
-
     it("Should create a valid user into the databse", (done) => {
         let newUser = {
             email: "sylvainniyonkuru23@gmail.com",
