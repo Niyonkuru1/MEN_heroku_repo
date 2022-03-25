@@ -164,21 +164,8 @@ var newRow = tableRef.insertRow(tableRef.rows.length);
 newRow.innerHTML = dt;
 newRow.setAttribute("rowid",id);
   }
-function displayAll(){
-  // onSnapshot(refi, (snapshor)=>{
-  //   let data = []
-  // snapshor.docs.forEach((doc) => {
-  //   data.push({ ...doc.data(), id: doc.id})
-  // })
-  // let ar = [];
-  // for (let g=0; g < data.length; g++){
-  //     //Calling the generate table function to add the fetched data
-  //     // into the DOM
-  //   generate_table(data[g]["Title"],data[g]['commentArr'].length, data[g]["id"], data[g]["CreatedAt"].toDate().toDateString(),
-  //    data[g]["CreatedAt"].toDate().toLocaleTimeString())
-  //   ar.push(data[g]["Title"]);
-  // }
 
+function displayAll(){
   fetch("https://my-brand-men-heroku.herokuapp.com/api/blogs", {
   method: "GET",
   credentials: 'same-origin',
@@ -189,7 +176,7 @@ function displayAll(){
 })
   .then(response => response.json())
   .then(data => {
-    console.log(data);
+    // console.log(data);
     let arr_id = [];
     for (let g=0; g < data.length; g++){
         //Calling the generate table function to add the fetched data
@@ -201,22 +188,3 @@ function displayAll(){
   })
 // document.location.reload();
 }
-
-
-
-// const loginForm = document.querySelector("#logout")
-// loginForm.addEventListener('click', (e) => {
-//     e.preventDefault()
-//   signOut(auth).then (()=>{
-//     console.log("hello hello amakuru urasohotse rero");
-//     goToTheLogin();
-//   })
-//   .catch((error)=>{
-//     console.log("the error is .... ", error)
-//   })
-//   }
-// )
-
-// function goToTheLogin(){
-//   window.location.href="../../Finished Files/Log-In/login.html"
-// }
