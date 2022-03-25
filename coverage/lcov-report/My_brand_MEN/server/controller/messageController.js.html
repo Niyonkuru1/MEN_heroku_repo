@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.05% </span>
+                <span class="strong">52.63% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/19</span>
+                <span class='fraction'>10/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">16.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>1/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>4/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.05% </span>
+                <span class="strong">52.63% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/19</span>
+                <span class='fraction'>10/19</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -133,14 +133,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -148,11 +141,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,9 +165,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -197,8 +197,8 @@
 &nbsp;
 &nbsp;
 //create and save new blog
-export const <span class="fstat-no" title="function not covered" >postMessage </span>= (req,res) =&gt;{
-<span class="cstat-no" title="statement not covered" >    if (!req.body){</span>
+export const postMessage = (req,res) =&gt;{
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!req.body){
 <span class="cstat-no" title="statement not covered" >        res.</span>status(400).send({
             message: "Content can not be empty"
         });
@@ -206,18 +206,18 @@ export const <span class="fstat-no" title="function not covered" >postMessage </
     // console.log(req.body);
     //new blog
   else {
-    const message = <span class="cstat-no" title="statement not covered" >new M</span>essagedb({
+    const message = new Messagedb({
         name: req.body.name,
         email: req.body.email,
         phone: req.body.phone,
         message: req.body.message
     })
     //save blog to database
-<span class="cstat-no" title="statement not covered" >    message</span>
+    message
     .save(message)
-    .then (<span class="fstat-no" title="function not covered" >(d</span>ata) =&gt;{
+    .then ((data) =&gt;{
         // console.log(data);
-<span class="cstat-no" title="statement not covered" >        res.</span>status(201).send(data);
+        res.status(201).send(data);
     })
     .catch(<span class="fstat-no" title="function not covered" >(e</span>rror)=&gt;{
         // console(req.body);
@@ -229,10 +229,10 @@ export const <span class="fstat-no" title="function not covered" >postMessage </
 &nbsp;
 }
 &nbsp;
-export const <span class="fstat-no" title="function not covered" >getMessage </span>= (req, res) =&gt;{
-<span class="cstat-no" title="statement not covered" >    Messagedb.f</span>ind()
-    .then(<span class="fstat-no" title="function not covered" >(m</span>essage)=&gt;{
-<span class="cstat-no" title="statement not covered" >        res.</span>status(202).send(message);
+export const getMessage = (req, res) =&gt;{
+    Messagedb.find()
+    .then((message)=&gt;{
+        res.status(202).send(message);
     })
     .catch(<span class="fstat-no" title="function not covered" >(e</span>rror)=&gt;{
         // res.status(500).send({message:error.message || 'Error Occured while retrieving blog information'})
@@ -265,7 +265,7 @@ export const <span class="fstat-no" title="function not covered" >deleteMessage 
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Fri Mar 25 2022 02:12:49 GMT+0200 (South Africa Standard Time)
+                at Fri Mar 25 2022 12:59:55 GMT+0200 (South Africa Standard Time)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

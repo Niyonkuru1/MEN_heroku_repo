@@ -7,7 +7,8 @@
     "dev": "set NODE_ENV=production&&nodemon --exec ./node_modules/.bin/babel-node server.js",
     "start": "node --require @babel/register server.js",
     "test": "set NODE_ENV=test&&mocha --timeout 300000 --require @babel/register test/**.test.js --exit",
-    "coverage": "nyc --reporter=lcov --reporter=text npm run test"
+    "coverage": "nyc --reporter=lcov --reporter=json-summary --reporter=text npm run test",
+    "coverage:badge": "coverage-badge-creator"
   },
   "keywords": [
     "crud",
@@ -41,6 +42,7 @@
   "devDependencies": {
     "chai": "^4.3.6",
     "chai-http": "^4.3.0",
+    "coverage-badge-creator": "^1.0.10",
     "mocha": "^9.2.2",
     "nodemon": "^2.0.15",
     "nyc": "^15.1.0"

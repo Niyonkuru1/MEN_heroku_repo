@@ -23,7 +23,6 @@ else if (process.env.NODE_ENV == "test"){
 else {
     bearerHeader = req.headers['authorization'];
 }  
-console.log(bearerHeader);
     if (typeof (bearerHeader) !== 'undefined' && typeof (bearerHeader) !== 'null'){
          //split the bearer from string to the array
         let bearerArr = bearerHeader.split(" ");

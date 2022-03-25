@@ -4,14 +4,15 @@ info:
   description: MongoDb ExpressJS Node API
   version: 1.0.0
 servers:
-  - url: https://my-brand-men-heroku.herokuapp.com/
+  # - url: https://my-brand-men-heroku.herokuapp.com/
+  - url: http://localhost:3000/
     description: Localhost Default server
 components:
   securitySchemes:
-    ApiKeyAuth:        # arbitrary name for the security scheme
-      type: apiKey
-      in: header       # can be "header", "query" or "cookie"
-      name: authorization
+    ApiKeyAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
 
   schemas:
     Blog:
@@ -26,6 +27,18 @@ components:
         date:
           type: string
     
+    Message:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        message:
+          type: string
+
     User:
       type: object
       properties:
@@ -89,7 +102,6 @@ paths:
                   data:
                     type: string
 
-
   /api/blogs:
     get:
       summary: Retrieves a list of blogs
@@ -123,7 +135,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Blog"
-  
+
   /api/blogs/{id}:
     get:
       summary: Specific Blogs
@@ -186,9 +198,64 @@ paths:
             type: string      
 
       responses:
-        201:
+        202:
           description: Blogs deleted succesfully
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Blog"
+ 
+  /api/messages:
+    get:
+      summary: Retrieves a list of messages
+      description: Retrieves a list of messages as JSON objects. 
+      responses:
+        200:
+          description: A list of Messages JSON objects in an array.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Message"
+    
+    post:
+      summary: Create a new Message in messageDB
+      description: Create a new message
+     
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Message"
+
+      responses:
+        201:
+          description: Message created succesfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Message"
+
+  /api/messages/{id}:
+    delete:
+      summary: Deletes a specific Messages
+      description: Deletes a specific Messages based on it id
+      security:
+        - ApiKeyAuth: []            
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id
+          schema:
+            type: string      
+
+      responses:
+        202:
+          description: Message deleted succesfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Message"

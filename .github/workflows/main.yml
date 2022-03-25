@@ -25,10 +25,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       
-      - name: NPM install, build and test
+      - name: NPM install, build, test and report
         run: |
           npm install
           npm test
+          npm run coverage:badge
         env:
           MONGO_URL_TEST: ${{ secrets.MONGO_URL_TEST }}  
           NODE_ENV: ${{ secrets.NODE_ENV }}  
