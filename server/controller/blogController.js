@@ -1,7 +1,8 @@
 import Blogdb from '../model/model';
 
 
-//create and save new blog
+
+
 export const create = (req,res)=>{
     //validate request
     if (!req.body){
@@ -112,28 +113,30 @@ Blogdb.findOneAndUpdate(
    { $push: { comments: newComment  } },
   function (error, success) {
         if (error) {
-            console.log(error);
         } else {
             // console.log(success);
             res.status(201).send({message: `comment content created`})
         }
     });
 }
+
+
+
+
+
+
 // delete the blog with the blog is specified in the request
 export const delet = (req,res)=>{
     const id = req.params.id;
-
     Blogdb.findByIdAndDelete(id)
     .then((data)=>{
         if(!data){
             res.status(403).send({mesage: `Content to delete already doesn't exist`})
-            console.log(data)
         }
         else {
             res.status(202).send({
                 message: 'Blogs deleted Successfuly!!'
             })
-            // console.log(data)
         }
     })
     .catch((error) =>{

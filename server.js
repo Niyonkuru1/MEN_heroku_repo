@@ -36,10 +36,10 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
 // app.use(function (req, res, next) {
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-//     res.setHeader('Access-Control-Allow-Credentials', true);
+    // res.setHeader('Access-Control-Allow-Origin', '*');
+    // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    // res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    // res.setHeader('Access-Control-Allow-Credentials', true);
 //     next();
 //     });
 
@@ -76,9 +76,11 @@ app.get("/api/welcome", (req,res)=>{
 
 import route from './server/routes/blogRoutes.js';
 import authRoute from './server/routes/authRoutes.js';
+import messageRoutes from './server/routes/messageRoute.js';
 //To reference to the routes
 app.use('/', route);
 app.use('/',authRoute);
+app.use('/',messageRoutes);
 
 module.exports = app;
 

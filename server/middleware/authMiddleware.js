@@ -23,16 +23,18 @@ else if (process.env.NODE_ENV == "test"){
 else {
     bearerHeader = req.headers['authorization'];
 }  
-    if (typeof (bearerHeader) !== 'undefined'){
+console.log(bearerHeader);
+    if (typeof (bearerHeader) !== 'undefined' && typeof (bearerHeader) !== 'null'){
          //split the bearer from string to the array
         let bearerArr = bearerHeader.split(" ");
         const bearerToken = bearerArr[1];
+        
     //get the token from the array
         if(bearerToken){
             jwt.verify(bearerToken,process.env.SECRET_KEY_DB, (err, decodedToken) =>{
                 if(err){
             // res.redirect('/login');
-            res.status(401).json({Error_message:'The action require to login'});
+            res.status(401).send({Error_message:'The action require to login'});
                 }
                 else {
                     next();
@@ -40,13 +42,11 @@ else {
             })
         }
         else {
-            // res.redirect('/login');
+            res.status(401).send({Error_message:'The action require to login'});
         }
     }
     else{
-        // res.status(404).json({message: 'login to access the routes!'});
-        res.status(401).json({Error_message:'The action require to login'})
-        // res.status(401).send({message: 'login to access the routes!'});
+        res.status(401).send({Error_message:'The action require to login'})
     }
 
 }

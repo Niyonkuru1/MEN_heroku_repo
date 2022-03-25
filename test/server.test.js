@@ -64,42 +64,32 @@ describe('/api/blogs TEST on the bloges_DB Collection', () => {
         done();
     })
 
-    it("Should retrieve blogs from database and with id", (done) => {
+    it("Should retrieve blogs from database", (done) => {
         let len;
         chai.request(app)
             .get("/api/blogs")
             .end((err, res) => {
-                var arrayId = [];
                 var blogs = res.body;
-                blogs.forEach(element => {
-                    arrayId.push(element._id);
-                });
                 len = blogs.length;
                 res.should.have.status(202);
                 expect(blogs).to.be.an("array");
                 expect(blogs[0]).to.be.an('object');
                 expect(len).to.not.be.an('undefined');
                 done();
-                arrayId.forEach(id => {
-                    chai.request(app)
-
                 })
             })
     })
-})
 
 describe('/api/blogs/:id  GET', () => {
     it('it should GET a blog by the given id', (done) => {
-        let blog = new Blogdb({
-            title: "The Lord of the Rings",
-            author: "J.R.R. Tolkien",
-            body: "testing the routes to see if id works",
-            date: "3/2/2022"
-        });
-        blog.save((err, blog) => {
-            chai.request(app)
-                .get(`/api/blogs/${blog._id}`)
-                .end((err, res) => {
+        let blog = new Blogdb({ title: "The Lord of the Rings", 
+        author: "J.R.R. Tolkien",
+         body: "hello", date: "1170" });
+          blog.save((err, blog) => {
+              chai.request(app)
+              .get(`/api/blogs/${blog._id}`)
+            .send(blog)
+            .end((err, res) => {
                     let bloge = res.body;
                     res.should.have.status(200);
                     expect(bloge).to.be.an('object');
@@ -115,28 +105,40 @@ describe('/api/blogs/:id  GET', () => {
 
 describe('/api/blogs PUT', () => {
     it('it should UPDATE a blog given the id', (done) => {
-        let blog = new Blogdb({
-            title: "The Chronicles of Narnia",
-            author: "C.S. Lewis",
-            body: "updating the blogs with the provided id",
-            date: "1/1/2010"
-        })
-        blog.save((err, blog) => {
-            chai.request(app)
-                .put(`/api/blogs/${blog._id}`)
-                .send({
-                    title: "THE KING OF THE JUNGLE",
-                    author: "C.S. Lewis",
-                    body: "updating the blogs with the provided id",
-                    date: "20/12/2050"
-                })
-                .end((err, res) => {
+        // let bloges = new Blogdb({
+        //     title: "The Chronicles of Narnia",
+        //     author: "C.S. Lewis",
+        //     body: "updating the blogs with the provided id",
+        //     date: "1/1/2010"
+        // });
+        // blog.save((err, blog) => {
+        //     chai.request(app)
+        //         .send({
+        //             title: "THE KING OF THE JUNGLE",
+        //             body: "updating the blogs with the provided id",
+        //             author: "C.S. Lewis",
+        //             date: "20/12/2050"
+        //         })
+        //         .end((err, res) => {
+            let blog = new Blogdb({
+                title: "The Chronicles of Narnia",
+             author: "C.S. Lewis",
+             body: '1948', 
+            date: '778'});
+            blog.save((err, blog) => {
+                  chai.request(app)
+                  .put(`/api/blogs/${blog._id}`)
+                  .send({
+                    title: "The Chronicles of Narnia",
+                 author: "C.S. Lewis",
+                 body: '1948', 
+                pages: 778})
+                  .end((err, res) => {
                     let data = res.body;
                     res.should.have.status(205);
                     data.should.be.a('object');
-                    data.should.have.property('title').eql("THE KING OF THE JUNGLE");
-                    data.should.have.property('date').eql("20/12/2050");
-
+                    data.should.have.property('title').eql("The Chronicles of Narnia");
+                    data.should.have.property('date').eql('778');
                     done();
                 });
         });
@@ -145,13 +147,14 @@ describe('/api/blogs PUT', () => {
 
 describe('/api/addcom/:id .. PUT', () => {
     it('it should ADD the comment to the blog with the id', (done) => {
-        let blog = new Blogdb({
+        let bloge = new Blogdb({
             title: "The king of tyre",
-            author: "nkusi ARTHUR",
-            body: "the Comment Addition testing",
+            body: "nkusi ARTHUR",
+            author: "the Comment Addition testing",
             date: "12/34/5050"
         })
-        blog.save((err, blog) => {
+        bloge.save((err, blog) => {
+            // console.log(blog);
             chai.request(app)
                 .put(`/api/blogs/addcom/${blog._id}`)
                 .send({

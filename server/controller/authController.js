@@ -37,15 +37,12 @@ export const log =  (req,res)=>{
 
 export const signup_post_contro = async (req, res) => {
     const { email, password } = req.body;
-    console.log(email);
-    console.log(password);
     try {
         const user = await Userdb.create({ email, password });
         const token = createToken(user._id);
            res.cookie('jwt', token, {
                httpOnly:true, maxAge: maxAge * 1000
            })
-           console.log(token);
         res.status(201).json({
             userCred: {
                 email: user.email,
@@ -55,8 +52,6 @@ export const signup_post_contro = async (req, res) => {
     catch (err) {
         const error = handleErrors(err);
         res.status(400).json({ message: error.message });
-        console.log(error.message)
-        // console.log(err.message);
     }
 }
 
@@ -70,7 +65,6 @@ export const login_post_contro = async (req, res) => {
     try {
         const user = await Userdb.login(email, password);
         const token = createToken(user._id);
-        console.log(token)
         res.cookie('jwt', token, {
         httpOnly:true, maxAge: maxAge * 1000
         })
@@ -83,7 +77,7 @@ export const login_post_contro = async (req, res) => {
         })
     }
     catch (err) {
-        res.status(401).json({ response: err.message });
+        res.status(401).send({ response: err.message });
     }
 
 }
@@ -92,6 +86,7 @@ export const login_post_contro = async (req, res) => {
 export const logout_get_contro = (req, res) => {
     res.cookie('jwt', '', {maxAge:1 });
     const authHeader = req.headers["authorization"];
+    res.status(200)
     jwt.sign(authHeader, "", { expiresIn: 1 }, (logout, err) => {
         if (logout) {
             res.status(202).send({ msg: 'You have been Logged Out' });
