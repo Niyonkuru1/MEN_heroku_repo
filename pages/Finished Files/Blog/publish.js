@@ -119,7 +119,7 @@ function generateBlogCard(title, body, dateCreated, Id) {
   containerDiv.className = "container"
   let imgDiv = document.createElement("div")
   imgDiv.className = "image"
-  let image = document.createElement("img")
+  let image = document.createElement("img") 
   image.setAttribute('src', '/images/project.png')
   imgDiv.appendChild(image)
   let headDiv = document.createElement("div")

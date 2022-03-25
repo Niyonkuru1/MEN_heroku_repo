@@ -61,6 +61,7 @@ function displayAll(){
                   mode: 'cors',
                   headers: {
                       "Content-type": "application/json",
+                      "authorization": localStorage.getItem("token")
                   },
                 })
                   .then(response => response.json())
