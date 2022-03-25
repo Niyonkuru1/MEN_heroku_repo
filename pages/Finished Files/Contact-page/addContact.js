@@ -9,7 +9,7 @@
         phone:addComment.phone.value,
         message: document.getElementById('message').value
     }
-    fetch('http://localhost:3000/api/messages', {
+    fetch('https://my-brand-men-heroku.herokuapp.com/api/messages', {
       method: "POST",
       headers: {
         "Content-type": "application/json",

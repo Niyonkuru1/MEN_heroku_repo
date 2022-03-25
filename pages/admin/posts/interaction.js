@@ -204,19 +204,19 @@ function displayAll(){
 
 
 
-const loginForm = document.querySelector("#logout")
-loginForm.addEventListener('click', (e) => {
-    e.preventDefault()
-  signOut(auth).then (()=>{
-    console.log("hello hello amakuru urasohotse rero");
-    goToTheLogin();
-  })
-  .catch((error)=>{
-    console.log("the error is .... ", error)
-  })
-  }
-)
+// const loginForm = document.querySelector("#logout")
+// loginForm.addEventListener('click', (e) => {
+//     e.preventDefault()
+//   signOut(auth).then (()=>{
+//     console.log("hello hello amakuru urasohotse rero");
+//     goToTheLogin();
+//   })
+//   .catch((error)=>{
+//     console.log("the error is .... ", error)
+//   })
+//   }
+// )
 
-function goToTheLogin(){
-  window.location.href="../../Finished Files/Log-In/login.html"
-}
+// function goToTheLogin(){
+//   window.location.href="../../Finished Files/Log-In/login.html"
+// }

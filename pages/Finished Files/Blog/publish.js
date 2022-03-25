@@ -11,7 +11,7 @@ fetch("https://my-brand-men-heroku.herokuapp.com/api/blogs", {
 })
   .then(response => response.json())
   .then(data => {
-    console.log(data);
+    // console.log(data);
     let arr_id = [];
     for (let g = 0; g < data.length; g++) {
       //Calling the generate table function to add the fetched data
@@ -21,15 +21,15 @@ fetch("https://my-brand-men-heroku.herokuapp.com/api/blogs", {
       arr_id.push(data[g]["_id"]);
     }
     createFooter();
-    console.log(arr_id);
+    // console.log(arr_id);
     // for (let p=0; p < arr_id.length; p++){
     // var hummer = arr_id;
     let buttoni = document.querySelectorAll(".kanda")
     buttoni.forEach((buttonItem, index) => {
       buttonItem.addEventListener("click", (e) => {
-        console.log("hello " + index);
+        // console.log("hello " + index);
         if (e.target.getAttribute("card_id") == arr_id[index]) {
-          console.log(`Ukanze iyi idi ${arr_id[index]} and same to this ${e.target.getAttribute("card_id")}`)
+          // console.log(`Ukanze iyi idi ${arr_id[index]} and same to this ${e.target.getAttribute("card_id")}`)
           fetch(`https://my-brand-men-heroku.herokuapp.com/api/blogs/${arr_id[index]}`, {
             method: "GET",
             credentials: 'same-origin',
@@ -40,7 +40,7 @@ fetch("https://my-brand-men-heroku.herokuapp.com/api/blogs", {
           })
             .then(response => response.json())
             .then(data => {
-              console.log(data)
+              // console.log(data)
               let bodi = data.body;
               let titlee = data.title;
               let datee = data.date;
@@ -318,6 +318,3 @@ function createFooter() {
   mainDivu.appendChild(footerDiv);
 }
 
-
-const localstorage_user = JSON.parse(localStorage.getItem('user'))
-console.log(localstorage_user)

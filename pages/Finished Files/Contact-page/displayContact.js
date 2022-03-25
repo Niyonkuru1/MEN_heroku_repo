@@ -1,25 +1,4 @@
-//   // Import the functions you need from the SDKs you need
-//   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
-//   // TODO: Add SDKs for Firebase products that you want to use
-//   // https://firebase.google.com/docs/web/setup#available-libraries
 
-//   import { getFirestore, arrayUnion, doc,
-//      collection, onSnapshot,getDocs,getDoc,deleteDoc
-// } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js"
-//   // Your web app's Firebase configuration
-//   const firebaseConfig = {
-//     apiKey: "AIzaSyCAMXuF7n_5lWaRI4M51Mb9aqLAMwjSOxY",
-//     authDomain: "admin-demo-7d3c5.firebaseapp.com",
-//     projectId: "admin-demo-7d3c5",
-//     storageBucket: "admin-demo-7d3c5.appspot.com",
-//     messagingSenderId: "961539757601",
-//     appId: "1:961539757601:web:d75a838e2d6bd1310bf560"
-//   };
-
-//   // Initialize Firebase
-//   const app = initializeApp(firebaseConfig);
-// const db = getFirestore(app);
-// const refCom = collection(db,"comment_section");
 
 displayAll();
 var itemList = document.getElementById('items');
@@ -28,7 +7,7 @@ itemList.addEventListener('click', (e)=>{
 });
 
 function displayAll(){
-  fetch("http://localhost:3000/api/messages", {
+  fetch("https://my-brand-men-heroku.herokuapp.com/api/messages", {
     method: "GET",
     credentials: 'same-origin',
     mode: 'cors',
@@ -76,7 +55,7 @@ function displayAll(){
              console.log(targetRowIdToDelete);
               //to delete the specified blog with id from the (DATABASE)
               // deleteDoc(docRef).then(()=>{
-                fetch(`http://localhost:3000/api/messages/${targetRowIdToDelete}`, {
+                fetch(`https://my-brand-men-heroku.herokuapp.com/api/messages/${targetRowIdToDelete}`, {
                   method: "DELETE",
                   credentials: 'same-origin',
                   mode: 'cors',
@@ -95,3 +74,5 @@ function displayAll(){
            }
          }  
        }
+
+       

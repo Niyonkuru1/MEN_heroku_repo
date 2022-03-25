@@ -47,12 +47,15 @@ loginForm.addEventListener('submit', (e) => {
 .then( res => {
   console.log(res.response);
   // removePreAddedbutton();
+  localStorage.setItem('status', 'logout');
   if (res.response == "Incorrect Email" || res.response == "Incorrect password"){
     LoginMessage(res.response);
   }
   let response = `Bearer ${res.token}`;
     localStorage.setItem('token', response);
+    localStorage.setItem('logout',res.userCred.email);
   if (loginCredentials.email == res.userCred.email){
+  localStorage.setItem('status', 'login');
                startAdminPage();
     }
     // localStorage.removeItem("token");
@@ -71,6 +74,8 @@ function LoginMessage(errorMessage){
   inputEl.setAttribute("type", "text")
   inputEl.setAttribute("class", "field")
   inputEl.setAttribute("id", "ErrorMessage")
+  inputEl.setAttribute("style","background-color:#f00")
+  // inputEl.setAttribute("style","color:#fff")
   form.appendChild(inputEl)
   // form.insertBefore(formLastItem, inputEl);
   // <input type="password" class="field" name ="password" placeholder="Enter your password">
@@ -82,7 +87,8 @@ function removePreAddedbutton(){
 }
 
   // ------ This is what you have to add --------
-
+  console.log(localStorage.getItem('status'))
+  // console.log(localStorage.getItem('token'))
   // -------------------------------------------
 
 
